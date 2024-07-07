@@ -9,8 +9,6 @@ brew install docker docker-buildx
 
 brew link docker
 
-unset HOMEBREW_NO_AUTO_UPDATE
-
 mkdir -p $HOME/.docker/cli-plugins
 if [ $(uname -m) == "x86_64" ]; then
     ln -sfn /usr/local/opt/docker-buildx/bin/docker-buildx $HOME/.docker/cli-plugins/docker-buildx

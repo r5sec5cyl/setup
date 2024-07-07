@@ -21,5 +21,3 @@ brew install --cask visual-studio-code
 brew install --cask meld
 brew install --cask rectangle
 brew install --cask sourcetree
-
-unset HOMEBREW_NO_AUTO_UPDATE
