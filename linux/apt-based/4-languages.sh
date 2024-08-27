@@ -3,9 +3,9 @@
 
 # python
 sudo add-apt-repository -y ppa:deadsnakes/ppa
-sudo apt update
+sudo apt-get update
 latest_stable_python=$(curl https://endoflife.date/api/python.json | jq -r '.[0].cycle')
-sudo apt install -y python${latest_stable_python}
+sudo apt-get install -y python${latest_stable_python}
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.12 1
 [ $(which python) ] || sudo ln -s $(which python3) $HOME/.local/bin/python
 

@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
 # 3-apps.sh
 
+# prefer apt wherever practical
+
 COMMON_PROFILE=.vprofile
 
 brew update
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-sudo apt install -y jq
+sudo apt-get install -y jq
 sudo snap install yq
-sudo apt install -y wget
-sudo apt install -y procps
-sudo apt install -y bat
+sudo apt-get install -y wget
+sudo apt-get install -y procps
+sudo apt-get install -y bat
 brew install tlrc
 
 sudo snap install --classic aws-cli
@@ -21,13 +23,14 @@ brew install stern
 
 # sudo snap install --classic android-studio
 sudo snap install --classic codium
-sudo apt install -y meld
+sudo apt-get install -y meld
 
 brew install tig gitui
-sudo apt install -y git-cola
-sudo apt install -y kitty
+sudo apt-get install -y git-cola
+sudo apt-get install -y kitty
+sudo apt-get install -y xclip
 
-curl -f https://zed.dev/install.sh | sh
+type zed > /dev/null || curl -f https://zed.dev/install.sh | sh
 
 ### app configurations ###
 
@@ -40,6 +43,14 @@ if [ -z "$entry" ]; then
 code() {
     codium \$@
 }   
+EOF
+fi
+
+entry=$(cat $HOME/$COMMON_PROFILE | grep 'alias xc')
+if [ -z "$entry" ]; then
+    cat <<EOF >> $HOME/$COMMON_PROFILE
+
+alias xc='xclip -selection clipboard'
 EOF
 fi
 

@@ -3,17 +3,17 @@
 set -x
 COMMON_PROFILE=.vprofile
 
-sudo apt update
-sudo apt upgrade -y
+sudo apt-get update
+sudo apt-get upgrade -y
 
 [ $(which flatpak) ] || echo "*** flatpak will now be installed; restart required ***"
 
-sudo apt install -y flatpak
+sudo apt-get install -y flatpak
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
-sudo apt install -y snapd
+sudo apt-get install -y snapd
 
-sudo apt autoremove && sudo apt clean
+sudo apt-get autoremove && sudo apt-get clean
 
 sudo flatpak update
 sudo snap refresh 
