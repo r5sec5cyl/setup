@@ -34,17 +34,12 @@ sudo snap install zig --classic --beta
 source $HOME/.bashrc
 
 echo
-echo "python --version" && \
-      python --version && echo
-echo "nvm --version" && \
-      nvm --version && echo
-echo "node -v" && \
-      node -v && echo
-echo "go version" && \
-      go version && echo
-echo "rustup -V" && \
-      rustup -V && echo
-echo "cargo -V" && \
-      cargo -V && echo
-echo "zig version" && \
-      zig version && echo
+echo "nvm --version"
+nvm --version
+set -x
+node -v
+python --version
+go version
+rustup -V
+cargo -V
+zig version
