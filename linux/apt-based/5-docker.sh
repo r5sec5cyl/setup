@@ -12,7 +12,7 @@ sudo chmod a+r "${DOCKER_KEYRING}"
 
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=${DOCKER_KEYRING}] ${DOCKER_PPA} \
-  $(. /etc/os-release && echo $(lsb_release -cs)) stable" | \
+  $(. /etc/os-release && lsb_release -cs) stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 
@@ -24,5 +24,5 @@ sudo apt-get install -y \
     docker-compose-plugin
 
 sudo addgroup --system docker
-sudo adduser $USER docker
+sudo adduser "${USER}" docker
 newgrp docker

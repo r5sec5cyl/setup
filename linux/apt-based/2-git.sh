@@ -3,16 +3,16 @@
 
 if [[ $(git config --global user.email) ]]; then
     echo "git global config already set ($(git config --global user.name)/$(git config --global user.email))"
-    read -p "Update (y/n): " update
+    read -r -p "Update (y/n): " update
 fi
 
 if [[ ${update} != n* ]] && [[ ${update} != N* ]]; then
     echo "Configure git global config: "
-    read -p "name: " GIT_NAME
-    read -p "email: " GIT_EMAIL
+    read -r -p "name: " git_name
+    read -r -p "email: " git_email
 
-    git config --global --replace-all user.name "${GIT_NAME}"
-    git config --global --replace-all user.email "${GIT_EMAIL}"
+    git config --global --replace-all user.name "${git_name}"
+    git config --global --replace-all user.email "${git_email}"
 fi
 
 email=$(git config --global user.email)
@@ -20,7 +20,7 @@ host_name="github.com"
 key_path="${HOME}/.ssh/${host_name}"
 ssh_config_path="${HOME}/.ssh/config"
 
-if [ ! -f ${key_path} ]; then
+if [ ! -f "${key_path}" ]; then
     ssh-keygen -t ed25519 -C "${email}" -f "${key_path}" -N ""
     eval "$(ssh-agent -s)"
     ssh-add "${key_path}"
@@ -29,10 +29,10 @@ fi
 
 echo "TODO: Please ensure the following public key is added to github. " \
     "https://${host_name}/settings/keys"
-cat ${key_path}.pub
+cat "${key_path}.pub"
 
 touch "${ssh_config_path}"
-if [[ ! $(grep "HostName ${host_name}" "${ssh_config_path}") ]] > /dev/null; then
+if ! grep -q "HostName ${host_name}" "${ssh_config_path}"; then
     cat <<EOF >> "${ssh_config_path}"
 
 Host ${host_name}

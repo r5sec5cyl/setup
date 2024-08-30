@@ -21,7 +21,7 @@ grep -q ".local/bin:\${PATH}" "$HOME/$COMMON_PROFILE" || \
   export PATH=\${HOME}/.local/bin:\${PATH}" >> "$HOME/$COMMON_PROFILE"
 
 grep -q "export PS1" "$HOME/$COMMON_PROFILE" || \
-    cat <<EOF >> $HOME/$COMMON_PROFILE
+    cat <<EOF >> "$HOME/$COMMON_PROFILE"
 
 export PS1='\[\e]0;<\W> \w\a\]\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\D{%a %Y-%m-%d}\033[0;90mT\[\033[01;32m\]\t\[\033[00m\]:\[\033[01;35m\]../\W\[\033[00m\] \$ '
 export PROMPT='%B%F{green}%D{%a %Y-%m-%d}%f%bT%B%F{green}%*:%F{magenta}%2~%f%b %# '

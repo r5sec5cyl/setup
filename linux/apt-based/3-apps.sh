@@ -32,11 +32,11 @@ brew install \
   gitui \
   dasel
 
-type zed > /dev/null || curl -f https://zed.dev/install.sh | sh
+which zed || curl -f https://zed.dev/install.sh | sh
 
 ### app configurations ###
 
-[ $(which bat) ] || sudo ln -s /usr/bin/batcat $HOME/.local/bin/bat
+which bat || sudo ln -s /usr/bin/batcat "${HOME}/.local/bin/bat"
 
 
 grep -q "code() {" "${HOME}/${COMMON_PROFILE}" || \
@@ -48,13 +48,14 @@ code() {
 EOF
 
 grep -q "alias xc\|xc() {" "${HOME}/${COMMON_PROFILE}" || \
-  cat <<EOF >> $HOME/$COMMON_PROFILE
+  cat <<EOF >> "$HOME/$COMMON_PROFILE"
 
 alias xc='xclip -selection clipboard'
 EOF
 
 kitty_conf="${HOME}/.config/kitty/kitty.conf"
-mkdir -p $(dirname "${kitty_conf}")
+kitty_conf_dir=$(dirname "${kitty_conf}")
+mkdir -p "${kitty_conf_dir}"
 touch "${kitty_conf}"
 grep -q "new_tab_with_cwd" "${kitty_conf}" || \
   echo "map alt+t new_tab_with_cwd" >> "${kitty_conf}"
