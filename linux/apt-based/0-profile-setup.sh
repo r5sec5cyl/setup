@@ -3,7 +3,7 @@
 
 COMMON_PROFILE=".vprofile"
 BASH_PROFILE=".bashrc"
-ZSH_PROFILE=".zprofile"
+ZSH_PROFILE=".zshrc"
 
 touch "$HOME/$COMMON_PROFILE"
 touch "$HOME/$BASH_PROFILE"
