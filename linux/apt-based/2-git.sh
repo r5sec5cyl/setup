@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # 2-git.sh
 
+git config --global init.defaultBranch main 
+
 if [[ $(git config --global user.email) ]]; then
     echo "git global config already set ($(git config --global user.name)/$(git config --global user.email))"
     read -r -p "Update (y/n): " update
