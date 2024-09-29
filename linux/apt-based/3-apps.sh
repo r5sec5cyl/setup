@@ -59,3 +59,5 @@ mkdir -p "${kitty_conf_dir}"
 touch "${kitty_conf}"
 grep -q "new_tab_with_cwd" "${kitty_conf}" || \
   echo "map alt+t new_tab_with_cwd" >> "${kitty_conf}"
+
+sudo apt remove --purge libreoffice-\*
