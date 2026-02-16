@@ -17,7 +17,10 @@ brew install tfenv && tfenv install && tfenv use
 brew install helm
 brew install stern
 
+brew install tectonic
+
 brew install --cask visual-studio-code
 brew install --cask meld
 brew install --cask rectangle
 brew install --cask sourcetree
+brew install --cask brave-browser

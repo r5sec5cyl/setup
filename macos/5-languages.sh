@@ -15,7 +15,7 @@ if [[ $langs = *rust* ]]; then
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 fi
 
-langs="$(echo $langs | sed 's#python#python pipenv#')"
+langs="$(echo $langs | sed 's#python#python pipenv uv#')"
 langs="$(echo $langs | sed 's#rust##')"
 
 brew install $langs
